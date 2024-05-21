@@ -1,0 +1,88 @@
+﻿def get_user_input():
+    print()
+    print("Enter")
+    print("1 : To order coffee.")
+    print("2 : To check the total money made up to this time.")
+    print("3 : To check the total amount of coffee sold up to this time")
+    print("4 : To check the number of cups of coffee of each size sold")
+    print("5 : To print the data")
+    print("9 : To exit the program")
+    ui = int(input())
+    print()
+    return ui
+
+
+def buy_coffee(small_price, medium_price, large_price):
+    small_cups_sold = 0
+    medium_cups_sold = 0
+    large_cups_sold = 0
+    total_cost = 0
+    while True:
+        print("Enter 1 to buy coffee in a small cup size(9 oz)")
+        print("Enter 2 to buy coffee in a medium cup size(12 oz)")
+        print("Enter 3 to buy coffee in a large cup size(15 oz)")
+        print("Enter 9 to exit")
+
+
+        ui = int(input())
+        print()
+
+
+        if ui == 1:
+            num_small_cups = int(input("Enter the number of cups: "))
+            total_cost += num_small_cups * small_price
+            small_cups_sold += num_small_cups
+            print()
+            continue
+
+
+        elif ui == 2:
+            num_medium_cups = int(input("Enter the number of cups: "))
+            total_cost += num_medium_cups * medium_price
+            medium_cups_sold += num_medium_cups
+            print()
+            continue
+
+
+        elif ui == 3:
+            num_large_cups = int(input("Enter the number of cups: "))
+            total_cost += num_large_cups * large_price
+            large_cups_sold += num_large_cups
+            print()
+            continue
+
+
+        elif ui == 9:
+            print(f"Please pay ${total_cost:.2f}")
+            break
+
+
+    return small_cups_sold, medium_cups_sold, large_cups_sold, total_cost
+
+
+def calculate_total_money(small_price, medium_price, large_price, small_sold, medium_sold, large_sold):
+    total_money = small_price * small_sold + medium_price * medium_sold + large_price * large_sold
+    print(f"Total money made: ${total_money:.2f}")
+
+
+def calculate_total_coffee_sold(small_oz, medium_oz, large_oz, small_sold, medium_sold, large_sold):
+    total_coffee_oz = small_sold * small_oz + medium_sold * medium_oz + large_sold * large_oz
+    print(f"Total amount of coffee sold: {total_coffee_oz} oz")
+
+
+def print_cup_counts(small_sold, medium_sold, large_sold):
+    print(f"Small cup count: {small_sold}")
+    print(f"Medium cup count: {medium_sold}")
+    print(f"Large cup count: {large_sold}")
+
+
+def print_sales_summary(small_price, medium_price, large_price, small_oz, medium_oz, large_oz, small_sold, medium_sold, large_sold):
+    print_cup_counts(small_sold, medium_sold, large_sold)
+    calculate_total_coffee_sold(small_oz, medium_oz, large_oz, small_sold, medium_sold, large_sold)
+    calculate_total_money(small_price, medium_price, large_price, small_sold, medium_sold, large_sold)
+
+
+def run_coffee_shop_sales_tracker():
+    small_sold = 0
+    medium_sold = 0
+    large_s
